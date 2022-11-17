@@ -865,9 +865,9 @@ Public Class frmRestore
         lblAppToken.Visible = txtAppToken.Visible
         btnAppToken.Visible = txtAppToken.Visible
         btnUserToken.Visible = txtUsername.Text.Length > 0 And cmbPassword.SelectedIndex = PasswordOrToken.token
-        btnListTables.Visible = txtUsername.Text.Length > 0 And cmbPassword.SelectedIndex > PasswordOrToken.Neither And txtPassword.Text.Length > 0 And txtServer.Text.Length > 0 And cmbBulkorSingle.SelectedIndex = BulkOrSingle.One And lblFileOrFolder.Text.Length > 0
+        btnListTables.Visible = txtUsername.Text.Length > 0 And cmbPassword.SelectedIndex > PasswordOrToken.Neither And txtPassword.Text.Length > 0 And txtServer.Text.Length > 0 And cmbBulkorSingle.SelectedIndex = BulkOrSingle.One
         lblTable.Visible = btnListTables.Visible
-        btnSource.Visible = cmbBulkorSingle.Visible And cmbBulkorSingle.SelectedIndex > BulkOrSingle.Neither
+        btnSource.Visible = cmbBulkorSingle.Visible And (cmbBulkorSingle.SelectedIndex = BulkOrSingle.TwoOrMore Or (lblTable.Text.Length > 0 And cmbBulkorSingle.SelectedIndex = BulkOrSingle.One))
         lblFileOrFolder.Visible = cmbBulkorSingle.Visible And cmbBulkorSingle.SelectedIndex > BulkOrSingle.Neither
         ckbDetectProxy.Visible = txtServer.Text.Length > 0 And txtServer.Visible
         chkBxHeaders.Visible = lblFileOrFolder.Visible And lblFileOrFolder.Text.Length > 0
