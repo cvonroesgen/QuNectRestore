@@ -172,7 +172,11 @@ Public Class frmRestore
                     Exit Function
                 End Try
                 While (dr.Read())
-                    getHashSetofFieldValues.Add(dr.GetValue(0))
+                    If dr.IsDBNull(0) Then
+                        getHashSetofFieldValues.Add("")
+                    Else
+                        getHashSetofFieldValues.Add(dr.GetValue(0))
+                    End If
                 End While
             End Using
         End Using
@@ -442,7 +446,7 @@ Public Class frmRestore
                                         End If
                                         If uniqueFidsForImport.Contains(fids(i)) Then
                                             'here we need to see if we have a duplicate
-                                            If Not uniqueNewFieldValues.Contains(fids(i)) Then
+                                            If Not uniqueNewFieldValues.ContainsKey(fids(i)) Then
                                                 uniqueNewFieldValues.Add(fids(i), New HashSet(Of String))
                                             End If
                                             If uniqueNewFieldValues(fids(i)).Contains(val) Then
